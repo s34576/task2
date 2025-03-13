@@ -25,7 +25,6 @@ public class Main {
                 if (wiek >= 10 && wiek <= 18 && (miejsce.equals("Warszawa") || miejsce.equals("warszawa"))) {
                     znizka = znizka + 50;
                 }
-
             }
             if (dzien.equals("Czwartek") || dzien.equals("czwartek")) {
                 znizka = 100;
@@ -33,7 +32,5 @@ public class Main {
             }
         }
         System.out.println("Dane: " + "  " + miejsce + ", " + wiek + " lat, " + "CENY BILETÓW: " + cenaFinalna + " PLN, " + znizka + "%");
-
-
     }
 }
