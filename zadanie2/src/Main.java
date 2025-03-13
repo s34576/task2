@@ -1,4 +1,5 @@
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -12,27 +13,35 @@ public class Main {
         String dzien = sc.next();
         double cenaBiletuPodstawowa = 40;
         int znizka = 0;
-        if (dzien.equals("czwartek")  || dzien.equals("Czwartek") ) {
-            znizka = 100;
-        } else {
-            znizka = 0;
-        }
-        if (miejsce.equals("Warszawa") || miejsce.equals("warszawa")) {
-            znizka = znizka+10;
-        } else {
-            znizka = 0;
-        }
-        if (wiek < 10) {
-            znizka = 100;
+       double cenaFinalna=cenaBiletuPodstawowa;
+       if(wiek<10)
+       {
+           znizka=100;
+           cenaFinalna=0.0;
+       }else {
+           if(wiek>=10&&wiek<=18)
+           {
+               znizka=50;
+               cenaFinalna=cenaBiletuPodstawowa*0.5;
+           }
+           if(miejsce.equals("Warszawa")||miejsce.equals("warszawa"))
+           {
+               znizka=10;
+               cenaFinalna=cenaFinalna-((cenaBiletuPodstawowa*znizka)/100);
+               if (wiek>=10&&wiek<=18&&(miejsce.equals("Warszawa")||miejsce.equals("warszawa"))) {
+                   znizka=znizka+50 ;
+               }
 
-        } else if (wiek >= 10 && wiek <= 18) {
-            znizka = 50;
-        } else {
-            znizka = 0;
+           }
+           if(dzien.equals("Czwartek")||dzien.equals("czwartek"))
+           {
+               znizka=100;
+               cenaFinalna=0.0;
+           }
+       }
+        System.out.println("Dane: "+ "  "+miejsce+", "+wiek+" lat, "+"CENY BILETÓW: "+cenaFinalna+" PLN, "+znizka+"%");
 
-}
-        double nowaCena=cenaBiletuPodstawowa-((znizka*cenaBiletuPodstawowa)/100);
-        System.out.println(miejsce+", "+dzien+", "+wiek+": "+nowaCena+": "+znizka+"% ");
+
 
     }
 }
